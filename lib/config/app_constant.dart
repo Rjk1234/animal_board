@@ -5,7 +5,7 @@ var sizeOptionList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 var opacityOptionList = [1, 20, 40, 60, 80, 100];
 
 var alarmAudioPath = "Sound-sci-fi.wav";
-var placeholderAnimalImagePath = "";
+String placeholderAnimalImagePath = "";
 
 String headerTitleText = "Animal Board";
 String headerSubTitleText = "Your animal choices";
