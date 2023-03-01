@@ -1,6 +1,7 @@
+import 'package:animal_board/config/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class BottomTabBarWidget extends StatefulWidget {
+class BottomTabBarWidget extends StatelessWidget {
   final Function(int) onTap;
   final int selectedIndex;
   final List itemList;
@@ -11,18 +12,13 @@ class BottomTabBarWidget extends StatefulWidget {
       required this.itemList});
 
   @override
-  State<BottomTabBarWidget> createState() => _BottomTabBarWidgetState();
-}
-
-class _BottomTabBarWidgetState extends State<BottomTabBarWidget> {
-  @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
             topRight: Radius.circular(15), topLeft: Radius.circular(15)),
         boxShadow: [
-          BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+          BoxShadow(color: kBlackShadow, spreadRadius: 0, blurRadius: 10),
         ],
       ),
       child: ClipRRect(
@@ -33,7 +29,7 @@ class _BottomTabBarWidgetState extends State<BottomTabBarWidget> {
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           //add background color
-          backgroundColor: Colors.white,
+          backgroundColor: kWhiteColor,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
@@ -56,21 +52,15 @@ class _BottomTabBarWidgetState extends State<BottomTabBarWidget> {
               label: 'More',
             ),
           ],
-          currentIndex: widget.selectedIndex,
+          currentIndex: selectedIndex,
           selectedItemColor: Theme.of(context).primaryColor,
-          unselectedItemColor: Colors.grey,
+          unselectedItemColor: kColorGrey,
           showUnselectedLabels: true,
           selectedFontSize: 11,
           unselectedFontSize: 10.0,
-          onTap: ((value) => widget.onTap(value)),
+          onTap: ((value) => onTap(value)),
         ),
       ),
     );
   }
-
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
 }

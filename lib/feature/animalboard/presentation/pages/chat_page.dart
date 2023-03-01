@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../core/widget/icon_button_widget.dart';
+import '../../../../core/widget/icon_button_widget.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});

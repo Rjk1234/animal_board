@@ -1,3 +1,4 @@
+import 'package:animal_board/config/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomIconButton extends StatelessWidget {
@@ -19,19 +20,19 @@ class CustomIconButton extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: kColorGrey.withOpacity(0.2),
               spreadRadius: 3,
               blurRadius: 7,
               offset: const Offset(0, 2),
             ),
           ],
-          color: Colors.white,
+          color: kWhiteColor,
           borderRadius: const BorderRadius.all(Radius.circular(13)),
         ),
         child: Icon(
           buttonIcon,
           size: 20,
-          color: Colors.grey,
+          color: kColorGrey,
         ),
       ),
     );

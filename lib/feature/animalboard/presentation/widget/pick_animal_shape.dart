@@ -67,13 +67,16 @@ class CustomButtonShapePainter extends CustomPainter {
     path_0.lineTo(0, size.height * 0.6808521);
     path_0.close();
 
-    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.shader = ui.Gradient.linear(
-        Offset(size.width * 0.5000000, 0),
-        Offset(size.width * 0.5000000, size.height),
-        [const Color(0xffA8EF7D).withOpacity(1), const Color(0xff44EC87).withOpacity(1)],
-        [0, 1]);
-    canvas.drawPath(path_0, paint_0_fill);
+    Paint paint0fill = Paint()..style = PaintingStyle.fill;
+    paint0fill.shader = ui.Gradient.linear(Offset(size.width * 0.5000000, 0),
+        Offset(size.width * 0.5000000, size.height), [
+      const Color(0xffA8EF7D).withOpacity(1),
+      const Color(0xff44EC87).withOpacity(1)
+    ], [
+      0,
+      1
+    ]);
+    canvas.drawPath(path_0, paint0fill);
   }
 
   @override

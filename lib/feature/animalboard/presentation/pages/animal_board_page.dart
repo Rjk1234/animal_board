@@ -1,15 +1,19 @@
+import 'package:animal_board/config/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:provider/provider.dart';
-import '../../config/app_constant.dart';
-import '../../core/widget/icon_button_widget.dart';
-import '../../data/model.dart';
-import '../animalboard/application/controller.dart';
-import '../animalboard/presentation/background_layout.dart';
-import '../../core/widget/draggable_dropdown_List_widget.dart';
-import '../header/presentation/header_view.dart';
-import '../header/presentation/image_picker.dart';
+import '../../../../config/app_constant.dart';
+import '../../../../config/string_constant.dart';
+import '../../../../core/widget/icon_button_widget.dart';
+import '../../../../data/model.dart';
+import '../../application/animal_provider.dart';
+import '../../application/schema_provider.dart';
+import '../../domain/model/animal_option.dart';
+import '../widget/background_layout.dart';
+import '../widget/draggable_dropdown_List_widget.dart';
+import '../widget/header_view.dart';
+import '../widget/image_picker.dart';
 import 'chat_page.dart';
 
 class AnimalBoardPage extends StatefulWidget {
@@ -29,13 +33,13 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
   @override
   void initState() {
     super.initState();
-    final postModel = Provider.of<UIThemeDataProvider>(context, listen: false);
+    final postModel = Provider.of<SchemaProvider>(context, listen: false);
     postModel.getPostData();
   }
 
   @override
   Widget build(BuildContext context) {
-    final uiModel = Provider.of<UIThemeDataProvider>(context);
+    final uiModel = Provider.of<SchemaProvider>(context);
     return ChangeNotifierProvider(
       create: (context) => AnimalProvider(),
       child: Builder(
@@ -116,22 +120,22 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
       children: [
         Text(
           name,
-          style: const TextStyle(
-              color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: kWhiteColor, fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(
           height: 5,
         ),
         Text(
           '$size%',
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: kWhiteColor),
         ),
       ],
     );
   }
 
-  Padding _buildAnimalBoard(BuildContext context, AnimalProvider provider,
-      UIThemeDataProvider uiModel) {
+  Padding _buildAnimalBoard(
+      BuildContext context, AnimalProvider provider, SchemaProvider uiModel) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: GestureDetector(
@@ -161,14 +165,14 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
     );
   }
 
-  Center _buildPickAnimalButton(UIThemeDataProvider uiModel) {
+  Center _buildPickAnimalButton(SchemaProvider uiModel) {
     return Center(
       child: Container(
         height: 40,
         width: 130,
-        decoration: const BoxDecoration(
-          color: Color(0xff44EC87),
-          borderRadius: BorderRadius.only(
+        decoration: BoxDecoration(
+          color: kButtonColor,
+          borderRadius: const BorderRadius.only(
             topRight: Radius.circular(25),
             topLeft: Radius.circular(25),
             bottomLeft: Radius.circular(15),
@@ -180,11 +184,11 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
             Icons.home_outlined, // uiModel.post?.buttonDetail[3].value.iconURL
             size: 18,
             color: Colors.black,
-          ), // Your icon here
+          ),
           label: Text(
             uiModel.post?.buttonDetail[3].value.title ?? pickAnimalButtonTitle,
-            style: const TextStyle(color: Colors.white, fontSize: 12),
-          ), // Your text here
+            style: TextStyle(color: kWhiteColor, fontSize: 12),
+          ),
           onPressed: () {
             touchDetected();
             showAnimalList = !showAnimalList;
@@ -195,7 +199,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
     );
   }
 
-  Padding _buildTopRow(BuildContext context, UIThemeDataProvider uiModel) {
+  Padding _buildTopRow(BuildContext context, SchemaProvider uiModel) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -288,10 +292,10 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
       List<AnimalOption> list, AnimalProvider provider) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: kWhiteColor,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: kColorGrey.withOpacity(0.2),
             spreadRadius: 3,
             blurRadius: 7,
             offset: const Offset(0, 2),
@@ -301,7 +305,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
       child: ListView.separated(
         separatorBuilder: (context, index) => Container(
           width: 5,
-          color: Colors.white,
+          color: kWhiteColor,
         ),
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
@@ -318,7 +322,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
                   borderRadius: BorderRadius.circular(5),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: kColorGrey.withOpacity(0.2),
                       spreadRadius: 3,
                       blurRadius: 7,
                       offset: const Offset(0, 2),
@@ -330,7 +334,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
                 alignment: Alignment.center,
                 child: Text(
                   list[index].animalName.toString(),
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(color: kWhiteColor),
                 ),
               ),
             ),

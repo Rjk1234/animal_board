@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../data/model.dart';
-import '../animalboard/application/controller.dart';
-import '../bottomTabBar/bottom_tab_bar.dart';
+import '../../../../data/model.dart';
+import '../../application/animal_provider.dart';
+import '../../../../core/widget/bottom_tab_bar.dart';
+import '../../application/schema_provider.dart';
 import 'animal_board_page.dart';
 import 'blog_page.dart';
 import 'community_page.dart';
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    final postModel = Provider.of<UIThemeDataProvider>(context, listen: false);
+    final postModel = Provider.of<SchemaProvider>(context, listen: false);
     postModel.getPostData();
   }
 
@@ -56,11 +57,11 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _buildTabBarItemList(UIThemeDataProvider model) {}
+  void _buildTabBarItemList(SchemaProvider model) {}
 
   @override
   Widget build(BuildContext context) {
-    final uiModel = Provider.of<UIThemeDataProvider>(context);
+    final uiModel = Provider.of<SchemaProvider>(context);
     _buildTabBarItemList(uiModel);
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,

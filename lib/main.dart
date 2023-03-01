@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'feature/animalboard/application/controller.dart';
-import 'feature/pages/home_page.dart';
+import 'feature/animalboard/application/animal_provider.dart';
+import 'feature/animalboard/application/schema_provider.dart';
+import 'feature/animalboard/presentation/pages/home_page.dart';
 import '../../config/app_constant.dart';
 
 void main() {
@@ -16,8 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AnimalProvider>(create: (_) => AnimalProvider()),
-        ChangeNotifierProvider<UIThemeDataProvider>(
-            create: (_) => UIThemeDataProvider()),
+        ChangeNotifierProvider<SchemaProvider>(create: (_) => SchemaProvider()),
       ],
       child: MaterialApp(
         theme: themeData,

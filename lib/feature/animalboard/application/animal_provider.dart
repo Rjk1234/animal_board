@@ -1,26 +1,13 @@
 import 'dart:io';
 
+import 'package:animal_board/config/app_colors.dart';
 import 'package:flutter/material.dart';
-import '../../../data/api_client.dart';
-import '../../../data/model.dart';
-
-class UIThemeDataProvider with ChangeNotifier {
-  UIResponseModel? post;
-  bool loading = false;
-
-  getPostData() async {
-    loading = true;
-    post = (await getData())!;
-    loading = false;
-
-    notifyListeners();
-  }
-}
+import '../domain/model/spirit_animal.dart';
 
 class AnimalProvider with ChangeNotifier {
   SpiritAnimal spiritAnimalSquare = SpiritAnimal(
       animalName: "Your Spirit Animal",
-      color: Colors.teal,
+      color: kColorTeal,
       size: 60,
       opacityValue: 0.8);
 
