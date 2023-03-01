@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../../config/app_constant.dart';
 import '../../../../config/string_constant.dart';
 import '../../../../core/widget/icon_button_widget.dart';
 import '../../../chat/presentation/page/chat_page.dart';
 import '../../application/animal_provider.dart';
-import '../../application/schema_provider.dart';
+import '../../../../core/schema/application/schema_provider.dart';
 import '../../domain/model/animal_option.dart';
 import '../widget/background_layout.dart';
 import '../widget/draggable_dropdown_List_widget.dart';
@@ -28,18 +29,18 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
   bool showAnimalList = false;
   bool showOpacityList = false;
   static AudioCache player = AudioCache();
-  // late AudioCache _audioCache;
+
   var animalList = [
-    AnimalOption(id: 0, animalName: 'Wolf', color: kColorRed),
-    AnimalOption(id: 1, animalName: 'Wolf', color: kColorPink),
-    AnimalOption(id: 2, animalName: 'Cat', color: kColorIndigo),
-    AnimalOption(id: 3, animalName: 'Cat', color: kColorPurple),
-    AnimalOption(id: 4, animalName: 'Penguin', color: kColorBlue),
-    AnimalOption(id: 5, animalName: 'Penguin', color: kColorGrey),
-    AnimalOption(id: 6, animalName: 'Koala', color: kColorYellow),
-    AnimalOption(id: 7, animalName: 'Koala', color: kColorTeal),
-    AnimalOption(id: 8, animalName: 'Leopard', color: kColorGreen),
-    AnimalOption(id: 9, animalName: 'Leopard', color: kColorLime),
+    AnimalOption(id: 0, name: 'Wolf', color: kColorRed),
+    AnimalOption(id: 1, name: 'Wolf', color: kColorPink),
+    AnimalOption(id: 2, name: 'Cat', color: kColorIndigo),
+    AnimalOption(id: 3, name: 'Cat', color: kColorPurple),
+    AnimalOption(id: 4, name: 'Penguin', color: kColorBlue),
+    AnimalOption(id: 5, name: 'Penguin', color: kColorGrey),
+    AnimalOption(id: 6, name: 'Koala', color: kColorYellow),
+    AnimalOption(id: 7, name: 'Koala', color: kColorTeal),
+    AnimalOption(id: 8, name: 'Leopard', color: kColorGreen),
+    AnimalOption(id: 9, name: 'Leopard', color: kColorLime),
   ];
 
   @override
@@ -47,14 +48,6 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
     super.initState();
     final postModel = Provider.of<SchemaProvider>(context, listen: false);
     postModel.getPostData();
-    //   _audioCache = AudioCache(
-    // prefix: "assets/sounds/",
-    // fixedPlayer: AudioPlayer(
-    //   // set mode to LOW_LATENCY for better performance with short audio files
-    //   mode: PlayerMode.LOW_LATENCY,
-    // )..setReleaseMode(ReleaseMode.STOP))
-    //   // pre-cache the audio file so it doesn't have to load on first call
-    //   ..load('buttonClick.wav');
   }
 
   @override
@@ -72,7 +65,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
                   child: Column(
                     children: <Widget>[
                       HeaderView(
-                        animalImage: value.spiritAnimalSquare.animalImage,
+                        animalImage: value.spiritAnimalSquare.image,
                         onTap: () {
                           touchDetected();
                           showImagePicker(context, value);
@@ -99,7 +92,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
                             ),
                           ],
                           _animalText(
-                              name: value.spiritAnimalSquare.animalName,
+                              name: value.spiritAnimalSquare.name,
                               size: value.spiritAnimalSquare.size),
                           if (showAnimalList == true) ...[
                             Positioned(
@@ -154,33 +147,38 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
     );
   }
 
-  Padding _buildAnimalBoard(
+  GestureDetector _buildAnimalBoard(
       BuildContext context, AnimalProvider provider, SchemaProvider uiModel) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: GestureDetector(
-        onTap: () {
-          touchDetected();
-          setState(() {});
-        },
-        onDoubleTap: () {
-          touchDetected();
-          showOpacityList = !showOpacityList;
-          setState(() {});
-        },
-        child: Container(
-          margin: const EdgeInsets.only(top: 10),
-          height: MediaQuery.of(context).size.height * 0.65,
-          width: MediaQuery.of(context).size.width * 0.9,
-          color: kColorRed.withOpacity(0.1),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            _buildTopRow(context, uiModel),
-            _buildCentralSquare(provider),
-            const Spacer(),
-            _buildPickAnimalButton(uiModel),
-          ]),
-        ),
+    return GestureDetector(
+      onTap: () {
+        touchDetected();
+        setState(() {});
+      },
+      onDoubleTap: () {
+        touchDetected();
+        showOpacityList = !showOpacityList;
+        setState(() {});
+      },
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.7,
+        width: MediaQuery.of(context).size.width * 0.9,
+        // color: kColorRed.withOpacity(0.1),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.62,
+            child: Column(children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+              _buildTopRow(context, uiModel),
+              _buildCentralSquare(provider),
+            ]),
+          ),
+          _buildPickAnimalButton(uiModel),
+        ]),
       ),
     );
   }
@@ -201,7 +199,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
         ),
         child: TextButton.icon(
           icon: Icon(
-            Icons.home_outlined, // uiModel.post?.buttonDetail[3].value.iconURL
+            Icons.home_outlined,
             size: 18,
             color: kColorBlack,
           ),
@@ -229,7 +227,6 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
             buttonIcon: Icons.stacked_line_chart,
             onTapHandler: () {
               touchDetected();
-              showSizeList = !showSizeList;
               setState(() {});
             },
           ),
@@ -250,8 +247,10 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
             buttonIcon: Icons.arrow_circle_left,
             onTapHandler: () {
               touchDetected();
-              showSizeList = !showSizeList;
+
               setState(() {});
+              Share.share('check out my website https://example.com',
+                  subject: 'Look what I made!');
             },
           )
         ],
@@ -333,7 +332,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
           return Center(
             child: GestureDetector(
               onTap: () {
-                provider.setSquareAnimal(list[index].animalName);
+                provider.setSquareAnimal(list[index].name);
                 provider.setSquareColor(list[index].color);
               },
               child: Container(
@@ -353,7 +352,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
                 height: 70,
                 alignment: Alignment.center,
                 child: Text(
-                  list[index].animalName.toString(),
+                  list[index].name.toString(),
                   style: TextStyle(color: kWhiteColor),
                 ),
               ),

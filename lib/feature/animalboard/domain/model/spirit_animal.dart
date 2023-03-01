@@ -2,15 +2,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class SpiritAnimal {
-  late File? animalImage;
+  late File? image;
   late int size;
-  late String animalName;
+  late String name;
   late double opacityValue;
   late Color color;
   SpiritAnimal(
       {required this.size,
-      required this.animalName,
+      required this.name,
       required this.opacityValue,
       required this.color,
-      this.animalImage});
+      this.image});
 }

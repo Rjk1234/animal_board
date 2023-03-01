@@ -9,15 +9,19 @@ class BackgroundLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Center(
-          child: AnimalBoardCard(
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.7,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 10,
+          ),
+          AnimalBoardCard(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.45,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

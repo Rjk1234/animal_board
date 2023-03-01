@@ -1,8 +1,9 @@
-import '../../../data/api_client.dart';
 import 'package:flutter/material.dart';
 
+import '../data/api_client.dart';
+
 class SchemaProvider with ChangeNotifier {
-  UIResponseModel? post;
+  SchemaModel? post;
   bool loading = false;
 
   getPostData() async {

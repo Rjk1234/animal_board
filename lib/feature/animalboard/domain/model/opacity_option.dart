@@ -1,10 +1,10 @@
 class OpacityOption {
   final int id;
-  final String opacityTitle;
-  final double opacityValue;
+  final String title;
+  final double value;
   const OpacityOption({
     required this.id,
-    required this.opacityTitle,
-    required this.opacityValue,
+    required this.title,
+    required this.value,
   });
 }

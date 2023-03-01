@@ -6,13 +6,13 @@ import '../domain/model/spirit_animal.dart';
 
 class AnimalProvider with ChangeNotifier {
   SpiritAnimal spiritAnimalSquare = SpiritAnimal(
-      animalName: "Your Spirit Animal",
+      name: "Your Spirit Animal",
       color: kColorTeal,
       size: 60,
       opacityValue: 0.8);
 
   void configAnimalSquare(SpiritAnimal square) {
-    spiritAnimalSquare.animalName = square.animalName;
+    spiritAnimalSquare.name = square.name;
     spiritAnimalSquare.color = square.color;
     spiritAnimalSquare.size = square.size;
     spiritAnimalSquare.opacityValue = square.opacityValue;
@@ -35,12 +35,12 @@ class AnimalProvider with ChangeNotifier {
   }
 
   void setSquareAnimal(String name) {
-    spiritAnimalSquare.animalName = name;
+    spiritAnimalSquare.name = name;
     notifyListeners();
   }
 
   void setAnimalImage(File image) {
-    spiritAnimalSquare.animalImage = image;
+    spiritAnimalSquare.image = image;
     notifyListeners();
   }
 }

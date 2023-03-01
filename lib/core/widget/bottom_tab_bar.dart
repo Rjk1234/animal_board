@@ -1,10 +1,12 @@
 import 'package:animal_board/config/app_colors.dart';
 import 'package:flutter/material.dart';
 
+import '../schema/domain/model/model.dart';
+
 class BottomTabBarWidget extends StatelessWidget {
   final Function(int) onTap;
   final int selectedIndex;
-  final List itemList;
+  final List<TabBarItem> itemList;
   const BottomTabBarWidget(
       {super.key,
       required this.onTap,
@@ -30,26 +32,36 @@ class BottomTabBarWidget extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           //add background color
           backgroundColor: kWhiteColor,
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'AnimalBoard',
+              icon: (itemList[0].iconUrl != null)
+                  ? networkIcon(itemList[0].iconUrl!)
+                  : const Icon(Icons.home_outlined),
+              label: itemList[0].title,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Blog',
+              icon: itemList[1].iconUrl != null
+                  ? networkIcon(itemList[1].iconUrl!)
+                  : const Icon(Icons.home_outlined),
+              label: itemList[1].title,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Community',
+              icon: itemList[2].iconUrl != null
+                  ? networkIcon(itemList[2].iconUrl!)
+                  : const Icon(Icons.home_outlined),
+              label: itemList[2].title,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Zoo Consultant',
+              icon: itemList[3].iconUrl != null
+                  ? networkIcon(itemList[3].iconUrl!)
+                  : const Icon(Icons.home_outlined),
+              label: itemList[3].title,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'More',
+              icon: itemList[4].iconUrl != null
+                  ? networkIcon(itemList[4].iconUrl!)
+                  : const Icon(Icons.home_outlined),
+              label: itemList[4].title,
             ),
           ],
           currentIndex: selectedIndex,
@@ -62,5 +74,9 @@ class BottomTabBarWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Image networkIcon(String url) {
+    return Image.network(url, height: 15, width: 15);
   }
 }

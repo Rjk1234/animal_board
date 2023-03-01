@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'feature/animalBoard/application/animal_provider.dart';
-import 'feature/animalBoard/application/schema_provider.dart';
-import 'feature/animalBoard/presentation/pages/home_page.dart';
+import 'core/schema/application/schema_provider.dart';
+import 'core/pages/dashboard_page.dart';
 import '../../config/app_constant.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: themeData,
-        home: const HomePage(),
+        home: const DashboardPage(),
       ),
     );
   }
