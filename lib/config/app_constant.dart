@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import '../data/model.dart';
-import '../feature/animalboard/domain/model/animal_option.dart';
 import 'app_colors.dart';
 
 var sizeOptionList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 var opacityOptionList = [1, 20, 40, 60, 80, 100];
 
-var animalList = [
-  AnimalOption(id: 0, animalName: 'Wolf', color: kColorRed),
-  AnimalOption(id: 1, animalName: 'Wolf', color: kColorPink),
-  AnimalOption(id: 2, animalName: 'Cat', color: kColorIndigo),
-  AnimalOption(id: 3, animalName: 'Cat', color: kColorPurple),
-  AnimalOption(id: 4, animalName: 'Penguin', color: kColorBlue),
-  AnimalOption(id: 5, animalName: 'Penguin', color: kColorGrey),
-  AnimalOption(id: 6, animalName: 'Koala', color: kColorYellow),
-  AnimalOption(id: 7, animalName: 'Koala', color: kColorTeal),
-  AnimalOption(id: 8, animalName: 'Leopard', color: kColorGreen),
-  AnimalOption(id: 9, animalName: 'Leopard', color: kColorLime),
-];
+// var animalList = [
+//   AnimalOption(id: 0, animalName: 'Wolf', color: kColorRed),
+//   AnimalOption(id: 1, animalName: 'Wolf', color: kColorPink),
+//   AnimalOption(id: 2, animalName: 'Cat', color: kColorIndigo),
+//   AnimalOption(id: 3, animalName: 'Cat', color: kColorPurple),
+//   AnimalOption(id: 4, animalName: 'Penguin', color: kColorBlue),
+//   AnimalOption(id: 5, animalName: 'Penguin', color: kColorGrey),
+//   AnimalOption(id: 6, animalName: 'Koala', color: kColorYellow),
+//   AnimalOption(id: 7, animalName: 'Koala', color: kColorTeal),
+//   AnimalOption(id: 8, animalName: 'Leopard', color: kColorGreen),
+//   AnimalOption(id: 9, animalName: 'Leopard', color: kColorLime),
+// ];
 
 var themeData = ThemeData(
   primaryColor: kPrimaryColor,

@@ -1,3 +1,4 @@
+import 'package:animal_board/config/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class DropDownListDraggable extends StatelessWidget {
@@ -13,11 +14,11 @@ class DropDownListDraggable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: kWhiteColor,
           borderRadius: BorderRadius.circular(5),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: kColorGrey.withOpacity(0.2),
               spreadRadius: 3,
               blurRadius: 7,
               offset: const Offset(0, 2),
@@ -26,11 +27,10 @@ class DropDownListDraggable extends StatelessWidget {
         ),
         width: 80,
         height: 300,
-        // color: Colors.white,
         child: ListView.separated(
           separatorBuilder: (context, index) => Container(
             height: 5,
-            color: Colors.white,
+            color: kWhiteColor,
           ),
           itemCount: items.length,
           itemBuilder: (BuildContext context, int index) {
@@ -70,18 +70,18 @@ class OptionBoxDraggable extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
+              color: kColorGrey.withOpacity(0.1),
               spreadRadius: 3,
               blurRadius: 5,
               offset: const Offset(0, 2),
             ),
           ],
-          color: Colors.white,
+          color: kWhiteColor,
           borderRadius: const BorderRadius.all(Radius.circular(5)),
         ),
         child: isOpacityBox
             ? OpacityOptionBox(
-                color: color ?? Colors.white,
+                color: color ?? kWhiteColor,
                 item: item,
               )
             : SizeOptionBox(
@@ -104,8 +104,8 @@ class SizeOptionBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(children: [
       Image.asset(
-        'assets/dottedSize.png',
-        color: Colors.grey,
+        'assets/images/dottedSize.png',
+        color: kColorGrey,
       ),
       Center(
         child: Text(
@@ -163,20 +163,20 @@ class OptionBoxDragged extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
+              color: kColorGrey.withOpacity(0.3),
               spreadRadius: 3,
               blurRadius: 5,
               offset: const Offset(0, 3),
             ),
           ],
-          color: Colors.white,
+          color: kWhiteColor,
           borderRadius: const BorderRadius.all(Radius.circular(5)),
         ),
         child: Material(
           color: Colors.transparent,
           child: isOpacityBox
               ? OpacityOptionBox(
-                  color: color ?? Colors.white,
+                  color: color ?? kWhiteColor,
                   item: item,
                 )
               : SizeOptionBox(

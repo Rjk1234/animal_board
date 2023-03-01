@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import '../../../../config/app_constant.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../config/string_constant.dart';
 import '../../../../core/widget/icon_button_widget.dart';
@@ -33,8 +32,8 @@ class HeaderView extends StatelessWidget {
             bottomLeft: Radius.circular(15),
             bottomRight: Radius.circular(15),
           ),
-          boxShadow: const [
-            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+          boxShadow: [
+            BoxShadow(color: kBlackShadow, spreadRadius: 0, blurRadius: 10),
           ],
         ),
         child: Padding(
@@ -57,7 +56,7 @@ class HeaderView extends StatelessWidget {
                                 fit: BoxFit.fitHeight,
                               )
                             : const Image(
-                                image: AssetImage('assets/nophoto.png')),
+                                image: AssetImage('assets/images/noPhoto.png')),
                       ),
                     ),
                   ),

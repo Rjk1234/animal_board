@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../config/app_colors.dart';
+
 class AnimalBoardShapePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -153,9 +155,9 @@ class AnimalBoardShapePainter extends CustomPainter {
         size.height * 0.07082913);
     path_0.close();
 
-    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.color = Colors.white.withOpacity(1.0);
-    canvas.drawPath(path_0, paint_0_fill);
+    Paint paint0fill = Paint()..style = PaintingStyle.fill;
+    paint0fill.color = kWhiteColor.withOpacity(1.0);
+    canvas.drawPath(path_0, paint0fill);
   }
 
   @override

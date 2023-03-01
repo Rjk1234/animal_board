@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../data/model.dart';
-import '../../application/animal_provider.dart';
 import '../../../../core/widget/bottom_tab_bar.dart';
 import '../../application/schema_provider.dart';
 import 'animal_board_page.dart';

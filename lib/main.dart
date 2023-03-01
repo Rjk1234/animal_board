@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'feature/animalboard/application/animal_provider.dart';
-import 'feature/animalboard/application/schema_provider.dart';
-import 'feature/animalboard/presentation/pages/home_page.dart';
+import 'feature/animalBoard/application/animal_provider.dart';
+import 'feature/animalBoard/application/schema_provider.dart';
+import 'feature/animalBoard/presentation/pages/home_page.dart';
 import '../../config/app_constant.dart';
 
 void main() {

@@ -6,7 +6,7 @@ Color kDarkGreyColor = const Color.fromARGB(255, 60, 60, 60);
 Color kBodyTextGreyColor = const Color(0xffa0a8b4);
 Color kButtonColor = const Color(0xff44EC87);
 
-
+Color kColorBlack = Colors.black;
 Color kBlackShadow = Colors.black38;
 Color kWhiteColor = Colors.white;
 Color kColorRed = Colors.red;

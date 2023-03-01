@@ -1,4 +1,4 @@
-String alarmAudioPath = "Sound-sci-fi.wav";
+String alarmAudioPath = "audio/Sound-sci-fi.wav";
 String placeholderAnimalImagePath = "";
 
 String headerTitleText = "Animal Board";

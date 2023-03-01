@@ -1,12 +1,12 @@
 import 'package:animal_board/config/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:provider/provider.dart';
 import '../../../../config/app_constant.dart';
 import '../../../../config/string_constant.dart';
 import '../../../../core/widget/icon_button_widget.dart';
-import '../../../../data/model.dart';
+import '../../../chat/presentation/page/chat_page.dart';
 import '../../application/animal_provider.dart';
 import '../../application/schema_provider.dart';
 import '../../domain/model/animal_option.dart';
@@ -14,7 +14,6 @@ import '../widget/background_layout.dart';
 import '../widget/draggable_dropdown_List_widget.dart';
 import '../widget/header_view.dart';
 import '../widget/image_picker.dart';
-import 'chat_page.dart';
 
 class AnimalBoardPage extends StatefulWidget {
   const AnimalBoardPage({super.key});
@@ -29,12 +28,33 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
   bool showAnimalList = false;
   bool showOpacityList = false;
   static AudioCache player = AudioCache();
+  // late AudioCache _audioCache;
+  var animalList = [
+    AnimalOption(id: 0, animalName: 'Wolf', color: kColorRed),
+    AnimalOption(id: 1, animalName: 'Wolf', color: kColorPink),
+    AnimalOption(id: 2, animalName: 'Cat', color: kColorIndigo),
+    AnimalOption(id: 3, animalName: 'Cat', color: kColorPurple),
+    AnimalOption(id: 4, animalName: 'Penguin', color: kColorBlue),
+    AnimalOption(id: 5, animalName: 'Penguin', color: kColorGrey),
+    AnimalOption(id: 6, animalName: 'Koala', color: kColorYellow),
+    AnimalOption(id: 7, animalName: 'Koala', color: kColorTeal),
+    AnimalOption(id: 8, animalName: 'Leopard', color: kColorGreen),
+    AnimalOption(id: 9, animalName: 'Leopard', color: kColorLime),
+  ];
 
   @override
   void initState() {
     super.initState();
     final postModel = Provider.of<SchemaProvider>(context, listen: false);
     postModel.getPostData();
+    //   _audioCache = AudioCache(
+    // prefix: "assets/sounds/",
+    // fixedPlayer: AudioPlayer(
+    //   // set mode to LOW_LATENCY for better performance with short audio files
+    //   mode: PlayerMode.LOW_LATENCY,
+    // )..setReleaseMode(ReleaseMode.STOP))
+    //   // pre-cache the audio file so it doesn't have to load on first call
+    //   ..load('buttonClick.wav');
   }
 
   @override
@@ -152,7 +172,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
           margin: const EdgeInsets.only(top: 10),
           height: MediaQuery.of(context).size.height * 0.65,
           width: MediaQuery.of(context).size.width * 0.9,
-          // color: Colors.red.withOpacity(0.1),
+          color: kColorRed.withOpacity(0.1),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             _buildTopRow(context, uiModel),
@@ -180,10 +200,10 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
           ),
         ),
         child: TextButton.icon(
-          icon: const Icon(
+          icon: Icon(
             Icons.home_outlined, // uiModel.post?.buttonDetail[3].value.iconURL
             size: 18,
-            color: Colors.black,
+            color: kColorBlack,
           ),
           label: Text(
             uiModel.post?.buttonDetail[3].value.title ?? pickAnimalButtonTitle,
