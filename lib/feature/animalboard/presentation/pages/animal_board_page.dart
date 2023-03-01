@@ -2,8 +2,9 @@ import 'package:animal_board/config/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart';
+// import 'package:share_plus/share_plus.dart';
 import '../../../../config/app_constant.dart';
 import '../../../../config/string_constant.dart';
 import '../../../../core/widget/icon_button_widget.dart';
@@ -209,7 +210,6 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
           ),
           onPressed: () {
             touchDetected();
-            showAnimalList = !showAnimalList;
             setState(() {});
           },
         ),
@@ -247,15 +247,21 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
             buttonIcon: Icons.arrow_circle_left,
             onTapHandler: () {
               touchDetected();
-
               setState(() {});
-              Share.share('check out my website https://example.com',
-                  subject: 'Look what I made!');
+              share();
             },
           )
         ],
       ),
     );
+  }
+
+  Future<void> share() async {
+    await FlutterShare.share(
+        title: 'Example share',
+        text: 'Example share text',
+        linkUrl: 'https://flutter.dev/',
+        chooserTitle: 'Example Chooser Title');
   }
 
   DragTarget<Object> _buildCentralSquare(AnimalProvider provider) {
