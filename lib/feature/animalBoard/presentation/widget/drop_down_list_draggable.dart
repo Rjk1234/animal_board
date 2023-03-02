@@ -108,9 +108,7 @@ class SizeOptionBox extends StatelessWidget {
         color: kColorGrey,
       ),
       Center(
-        child: Text(
-          '$item%',
-        ),
+        child: Text('$item%', style: TextStyle(color: kColorBlack)),
       ),
     ]);
   }
@@ -135,6 +133,7 @@ class OpacityOptionBox extends StatelessWidget {
       Center(
         child: Text(
           '$item%',
+          style: TextStyle(color: kColorBlack),
         ),
       ),
     ]);

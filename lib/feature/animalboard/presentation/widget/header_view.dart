@@ -65,9 +65,9 @@ class HeaderView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(headerTitle ?? headerTitleText,
-                        style: Theme.of(context).textTheme.headline1),
+                        style: Theme.of(context).textTheme.titleLarge),
                     Text(headerSubtitle ?? headerSubTitleText,
-                        style: Theme.of(context).textTheme.bodyText1)
+                        style: Theme.of(context).textTheme.titleSmall)
                   ],
                 ),
                 const Spacer(),

@@ -1,3 +1,4 @@
+import 'package:animal_board/config/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../feature/blog/presentation/blog_page.dart';
@@ -65,7 +66,7 @@ class _DashboardPageState extends State<DashboardPage> {
     final uiModel = Provider.of<SchemaProvider>(context);
     _buildTabBarItemList(uiModel);
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: kBackgroundColor,
       bottomNavigationBar: BottomTabBarWidget(
         selectedIndex: pageIndex,
         onTap: ((index) => _onTabBarItemTapped(index)),

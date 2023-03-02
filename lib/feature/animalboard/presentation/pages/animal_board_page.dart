@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:provider/provider.dart';
-// import 'package:share_plus/share_plus.dart';
 import '../../../../config/app_constant.dart';
 import '../../../../config/string_constant.dart';
 import '../../../../core/widget/icon_button_widget.dart';
@@ -13,10 +12,18 @@ import '../../application/animal_provider.dart';
 import '../../../../core/schema/application/schema_provider.dart';
 import '../../domain/model/animal_option.dart';
 import '../widget/background_layout.dart';
-import '../widget/draggable_dropdown_List_widget.dart';
+import '../widget/drop_down_list_draggable.dart';
 import '../widget/header_view.dart';
 import '../widget/image_picker.dart';
+// apps_outlined
+// auto_awesome_motion_sharp
+// layers_sharp
 
+// redo_rounded → const IconData
+// redo — material icon named "redo" (round).
+// IconData(0xf00e7, fontFamily: 'MaterialIcons', matchTextDirection: true)
+// shortcut_rounded → const IconData
+// shortcut — material icon named "shortcut" (round).
 class AnimalBoardPage extends StatefulWidget {
   const AnimalBoardPage({super.key});
 
@@ -59,7 +66,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
       child: Builder(
         builder: (context) {
           return Scaffold(
-            backgroundColor: Theme.of(context).backgroundColor,
+            backgroundColor: kBackgroundColor,
             body: Consumer<AnimalProvider>(
               builder: ((context, value, child) {
                 return Center(
@@ -210,6 +217,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
           ),
           onPressed: () {
             touchDetected();
+            showAnimalList = !showAnimalList;
             setState(() {});
           },
         ),
@@ -224,9 +232,10 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomIconButton(
-            buttonIcon: Icons.stacked_line_chart,
+            buttonIcon: Icons.layers_sharp,
             onTapHandler: () {
               touchDetected();
+              showSizeList = !showSizeList;
               setState(() {});
             },
           ),
@@ -235,16 +244,16 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(uiModel.post?.textTheme.animalBoardTitle ?? animalBoardTitle,
-                  style: Theme.of(context).textTheme.headline2),
+                  style: Theme.of(context).textTheme.titleMedium),
               const SizedBox(height: 4),
               Text(
                   uiModel.post?.textTheme.animalBoardSubtitle ??
                       animalBoardSubTitle,
-                  style: Theme.of(context).textTheme.subtitle1),
+                  style: Theme.of(context).textTheme.labelSmall),
             ],
           ),
           CustomIconButton(
-            buttonIcon: Icons.arrow_circle_left,
+            buttonIcon: Icons.redo_rounded,
             onTapHandler: () {
               touchDetected();
               setState(() {});
@@ -287,10 +296,31 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
                         (provider.spiritAnimalSquare.size / 100),
                     width: maxCentralSquareSize *
                         (provider.spiritAnimalSquare.size / 100),
+                    //                 decoration: BoxDecoration(
+                    //   boxShadow: [
+                    //     BoxShadow(
+                    //       color: kColorGrey.withOpacity(0.2),
+                    //       spreadRadius: 3,
+                    //       blurRadius: 7,
+                    //       offset: const Offset(0, 2),
+                    //     ),
+                    //   ],
+                    //   color: kWhiteColor,
+                    //   borderRadius: const BorderRadius.all(Radius.circular(13)),
+                    // ),
                     decoration: BoxDecoration(
-                        color: provider.spiritAnimalSquare.color.withOpacity(
-                            provider.spiritAnimalSquare.opacityValue),
-                        borderRadius: BorderRadius.circular(10)),
+                      color: provider.spiritAnimalSquare.color.withOpacity(
+                          provider.spiritAnimalSquare.opacityValue),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: kColorGrey.withOpacity(0.2),
+                          spreadRadius: 3,
+                          blurRadius: 7,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
