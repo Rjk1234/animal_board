@@ -15,15 +15,7 @@ import '../widget/background_layout.dart';
 import '../widget/drop_down_list_draggable.dart';
 import '../widget/header_view.dart';
 import '../widget/image_picker.dart';
-// apps_outlined
-// auto_awesome_motion_sharp
-// layers_sharp
 
-// redo_rounded → const IconData
-// redo — material icon named "redo" (round).
-// IconData(0xf00e7, fontFamily: 'MaterialIcons', matchTextDirection: true)
-// shortcut_rounded → const IconData
-// shortcut — material icon named "shortcut" (round).
 class AnimalBoardPage extends StatefulWidget {
   const AnimalBoardPage({super.key});
 
@@ -170,7 +162,6 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.7,
         width: MediaQuery.of(context).size.width * 0.9,
-        // color: kColorRed.withOpacity(0.1),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const SizedBox(
             height: 10,
@@ -267,10 +258,10 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
 
   Future<void> share() async {
     await FlutterShare.share(
-        title: 'Example share',
-        text: 'Example share text',
+        title: 'Spirit Animal',
+        text: 'I am sharing my spirit animal',
         linkUrl: 'https://flutter.dev/',
-        chooserTitle: 'Example Chooser Title');
+        chooserTitle: 'Spirit Animal');
   }
 
   DragTarget<Object> _buildCentralSquare(AnimalProvider provider) {
@@ -296,18 +287,7 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
                         (provider.spiritAnimalSquare.size / 100),
                     width: maxCentralSquareSize *
                         (provider.spiritAnimalSquare.size / 100),
-                    //                 decoration: BoxDecoration(
-                    //   boxShadow: [
-                    //     BoxShadow(
-                    //       color: kColorGrey.withOpacity(0.2),
-                    //       spreadRadius: 3,
-                    //       blurRadius: 7,
-                    //       offset: const Offset(0, 2),
-                    //     ),
-                    //   ],
-                    //   color: kWhiteColor,
-                    //   borderRadius: const BorderRadius.all(Radius.circular(13)),
-                    // ),
+                    
                     decoration: BoxDecoration(
                       color: provider.spiritAnimalSquare.color.withOpacity(
                           provider.spiritAnimalSquare.opacityValue),
@@ -329,7 +309,6 @@ class _AnimalBoardPageState extends State<AnimalBoardPage> {
         );
       },
       onAccept: (data) {
-        debugPrint('hi $data');
         if (data is int) {
           provider.spiritAnimalSquare.size = data;
         } else if (data is double) {
